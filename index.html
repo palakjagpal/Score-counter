@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Basketball Scoreboard Controller</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Delius&family=Delius+Swash+Caps&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!--Header-->
+        <div class="header-container">
+            <h1>Basketball Scoreboard Controller</h1>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <div class="slider round"></div>
+                </label>
+                <span class="theme-label">Dark Mode</span>
+            </div>
+        </div>
+
+        <div class="scoreboard-container">
+
+            <!--Team 1-->
+            <div class="team-section team1-section">
+                <h2 class="team-name" id="home-team-name">Team 1</h2>
+                <div class="score-display" id="team1-score">0</div>
+                <div class="score-buttons">
+                    <button onclick="Team1add1point()">+1</button>
+                    <button onclick="Team1add2point()">+2</button>
+                    <button onclick="Team1add3point()">+3</button>
+                </div>
+                <div class="fouls-section">
+                    <h2>Fouls</h2>
+                    <div class="fouls-display" id="team1-fouls">0</div>
+                    <div class="foul-buttons">
+                        <button onclick="addteam1foul()">Add Foul</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Timer-->
+            <div class="timer-section team-section">
+                <h2>Game Clock</h2>
+                <div class="timer-display" id="game-timer">00:00</div>
+                <div class="timer-buttons">
+                    <button id="start-timer">Start</button>
+                    <button id="pause-timer">Pause</button>
+                    <button id="reset-timer">Reset</button>
+                    <input
+                        type="number"
+                        id="minutes-input"
+                        placeholder="Min"
+                        min="0"
+                        value="10"
+                    >
+                    <input
+                        type="number"
+                        id="seconds-input"
+                        placeholder="Sec"
+                        min="0"
+                        max="59"
+                        value="0"
+                    >
+                    <button id="set-timer">Set</button>
+                </div>
+            </div>
+
+            <!--Team 2 -->
+            <div class="team-section team2-section">
+                <h2 class="team-name" id="home-team-name">Team 2</h2>
+                <div class="score-display" id="team2-score">0</div>
+                <div class="score-buttons">
+                    <button onclick="Team2add1point()">+1</button>
+                    <button onclick="Team2add2point()">+2</button>
+                    <button onclick="Team2add3point()">+3</button>
+                </div>
+                <div class="fouls-section">
+                    <h2>Fouls</h2>
+                    <div class="fouls-display" id="team2-fouls">0</div>
+                    <div class="foul-buttons">
+                        <button onclick="addteam2foul()">Add Foul</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <script src="index.js"></script>
+    </body>
+</html>
