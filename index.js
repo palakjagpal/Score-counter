@@ -191,3 +191,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize timer to 10:00 (or whatever initial value in input fields)
     setTimer();
 });
+
+const checkbox = document.getElementById('checkbox');
+const rootElement = document.documentElement;
+
+checkbox.addEventListener('change', () => {
+  if (checkbox.checked) {
+    rootElement.setAttribute('data-theme', 'dark');
+  } else {
+    rootElement.setAttribute('data-theme', 'light');
+  }
+});
+
+// Optional: initialize theme
+window.addEventListener('DOMContentLoaded', () => {
+  rootElement.setAttribute('data-theme', 'light');
+});
