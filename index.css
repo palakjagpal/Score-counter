@@ -1,433 +1,189 @@
-/* --- Root Variables for Light and Dark Mode --- */
 :root {
-    /* Light Mode Pastel Colors */
-    --background-light: #fdfdff; /* Off-white / very light blue */
-    --text-color-light: #152837; /* Darker pastel blue for text */
-    --primary-light: #334a53; /* Light blue */
-    --secondary-light: #b3d9ff; /* Pale blue */
-    --accent-light: #e84252; /* Light pink */
-    --button-bg-light: #c0d9e7; /* Muted blue */
-    --button-hover-light: #a4c4d9;
-    --card-bg-light: #e0f2f7; /* Very light blue-green */
-    --border-light: #d0e0e3;
-
-    /* Dark Mode Muted/Deep Colors */
-    --background-dark: #2c3e50; /* Dark blue/grey */
-    --text-color-dark: white; /* Light grey for text */
-    --primary-dark: lavender; /* Deeper blue/grey */
-    --secondary-dark: #5b7f9b; /* Muted blue */
-    --accent-dark: #9e908b; /* Muted red */
-    --button-bg-dark: #3b5a75; /* Darker muted blue */
-    --button-hover-dark: #4a6c8b;
-    --card-bg-dark: #3e5c76; /* Dark blue-grey */
-    --border-dark: #4b6a88;
-
-    /* Initial state (light mode) */
-    --background-color: var(--background-light);
-    --text-color: var(--text-color-light);
-    --primary-color: var(--primary-light);
-    --secondary-color: var(--secondary-light);
-    --accent-color: var(--accent-light);
-    --button-background: var(--button-bg-light);
-    --button-hover-background: var(--button-hover-light);
-    --card-background: var(--card-bg-light);
-    --border-color: var(--border-light);
+    --bg-color: #fdf6f0;
+    --text-color: #2b2b2b;
+    --accent-color: #ffc7c7;
+    --primary: #bde0fe;
+    --secondary: #caffbf;
+    --highlight: #ffdac1;
+    --button-bg: #ffadad;
+    --button-text: #2b2b2b;
 }
 
-/* --- Dark Mode Active Styles --- */
-body.dark-mode {
-    --background-color: var(--background-dark);
-    --text-color: var(--text-color-dark);
-    --primary-color: var(--primary-dark);
-    --secondary-color: var(--secondary-dark);
-    --accent-color: var(--accent-dark);
-    --button-background: var(--button-bg-dark);
-    --button-hover-background: var(--button-hover-dark);
-    --card-background: var(--card-bg-dark);
-    --border-color: var(--border-dark);
+[data-theme="dark"] {
+    --bg-color: #2c2c2c;
+    --text-color: #f3f3f3;
+    --accent-color: #a390c4;
+    --primary: #7fbcff;
+    --secondary: #94c7a7;
+    --highlight: #d9b8a6;
+    --button-bg: #8471bf;
+    --button-text: #ffffff;
 }
 
-/* --- General Body and Typography --- */
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url("basketball-court.jpg");
-    background-size: cover;
-    height: 100vh;
-    /*background-color: var(--background-color);*/
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
     color: var(--text-color);
+    padding: 1rem;
     transition: background-color 0.3s ease, color 0.3s ease;
-    padding: 20px;
-    box-sizing: border-box; /* Include padding in element's total width and height */
+    font-family: 'Manrope';
 }
 
-h1, h2 {
-    font-family: 'Delius Swash Caps', cursive;
-    color: var(--primary-color);
+h1,h2{
     text-align: center;
-    margin-bottom: 20px;
+    font-family: 'Delius';
 }
 
-/* --- Header Container --- */
 .header-container {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 900px;
-    margin-bottom: 30px;
-    padding: 15px;
-    background-color: var(--card-background);
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    gap: 1rem;
 }
 
-.header-container h1 {
-    margin: 0 0 15px 0;
-    font-size: clamp(1.8rem, 5vw, 2.8rem); /* Responsive font size */
-}
-
-/* --- Theme Switch Toggle --- */
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-.theme-switch {
+/* Toggle Switch */
+.theme-switch input {
+    display: none;
+}
+.slider.round {
     position: relative;
-    display: inline-block;
     width: 50px;
     height: 24px;
-}
-
-.theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
+    background-color: var(--primary);
+    border-radius: 50px;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--primary-light); /* Light mode switch color */
-    transition: 0.4s;
-    border-radius: 24px;
+    transition: background-color 0.3s ease;
 }
-
-.slider:before {
-    position: absolute;
+.slider.round::before {
     content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    left: 2px;
+    background-color: var(--button-text);
     border-radius: 50%;
+    transition: transform 0.3s ease;
 }
-
-input:checked + .slider {
-    background-color: var(--primary-dark); /* Dark mode switch color */
-}
-
-input:checked + .slider:before {
+input:checked + .slider.round::before {
     transform: translateX(26px);
 }
 
-.theme-label {
-    font-size: 0.9em;
-    color: var(--text-color);
-}
-
-/* --- Scoreboard Container --- */
 .scoreboard-container {
     display: flex;
-    flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+    flex-wrap: wrap;
+    gap: 1.5rem;
     justify-content: center;
-    gap: 30px;
-    width: 100%;
-    max-width: 1000px;
-    padding: 20px;
-    box-sizing: border-box;
 }
 
-/* --- Team Sections and Timer Section Shared Styles --- */
 .team-section {
-    background-color: var(--card-background);
+    background-color: var(--highlight);
+    padding: 1rem;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    flex: 1 1 300px;
+    max-width: 500px;
+}
+
+.team-name {
+    font-size: 1.5rem;
     text-align: center;
-    flex: 1; /* Allows sections to grow and shrink */
-    min-width: 280px; /* Minimum width before wrapping */
-    max-width: 450px; /* Max width for a single column */
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* --- Specific Timer Section Styles --- */
-.timer-section {
-    order: 2; /* Ensures it's between team1 and team2 when wrapped */
-    flex: 1 1 240px; /* Allow it to shrink/grow, and have a base width */
-    max-width: 500px; /* Adjust max-width for the timer */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically center content */
-}
-
-.timer-section h2 {
-    margin-bottom: 10px; /* Adjust margin for timer title */
-}
-
-.timer-display {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(3.5rem, 7vw, 5.5rem); /* Slightly smaller for timer but still prominent */
-    font-weight: 700;
-    color: var(--accent-color);
-    /*background-color: var(--secondary-color);*/
-    padding: 15px 0;
-    border-radius: 8px;
-    /*box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);*/
-    margin-bottom: 30px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 0.5rem;
 }
 
 .timer-buttons {
     display: flex;
-    justify-content: center;
-    align-items: center; /* Align items vertically in the flex container */
-    gap: 10px; /* Smaller gap for more buttons */
-    flex-wrap: wrap; /* Allow buttons and inputs to wrap */
-    margin-bottom: 0; /* Remove bottom margin from default .score-buttons */
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
 }
 
-.timer-buttons button {
-    padding: 10px 20px; /* Slightly smaller padding for timer buttons */
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    flex-shrink: 0; /* Prevent buttons from shrinking too much */
-}
-
-.timer-buttons input[type="number"] {
-    width: 60px; /* Fixed width for input fields */
-    padding: 10px 5px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    text-align: center;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    background-color: var(--background-color); /* Match theme */
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    -moz-appearance: textfield; /* Hide arrows for Firefox */
-    font-family: 'Quicksand';
-    font-weight: bold;
-}
-
-/* Hide arrows for Chrome, Safari, Edge */
-.timer-buttons input[type="number"]::-webkit-outer-spin-button,
-.timer-buttons input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-
-/* --- Team Score/Foul Display Styles (already present, just keeping them below for completeness) --- */
-.team-name {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    margin-bottom: 20px;
-    color: var(--primary-color);
-}
-
-.score-display {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(4rem, 10vw, 6rem);
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: var(--accent-color); /* Score number color remains accent */
-    background-color: var(--secondary-color);
-    padding: 15px 0;
-    border-radius: 8px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.score-buttons, .foul-buttons {
+.timer-buttons-row {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap; /* Wrap buttons on small screens */
+}
+
+.score-display,
+.fouls-display,
+.timer-display {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.score-buttons,
+.foul-buttons,
+.timer-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
 }
 
 button {
-    background-color: var(--button-background);
-    color: var(--text-color); /* Button text color adjusted */
+    background-color: var(--button-bg);
+    color: var(--button-text);
     border: none;
-    padding: 12px 25px;
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    font-weight: 600;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease, color 0.3s ease;
-    flex: 1; /* Allows buttons to share space */
-    min-width: 80px; /* Minimum width for buttons */
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: var(--button-hover-background);
-    transform: translateY(-2px);
+    background-color: var(--accent-color);
 }
 
-button:active {
-    transform: translateY(0);
-}
-
-.fouls-section h2 {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    margin-top: 20px;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-}
-
-.fouls-display {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 600;
-    color: var(--accent-color); /* Foul number color remains accent */
-    background-color: var(--secondary-color);
-    padding: 10px 0;
+input[type="number"] {
+    padding: 0.5rem;
+    border: 2px solid var(--primary);
     border-radius: 8px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 70px;
+    text-align: center;
 }
 
-/* --- Responsive Design --- */
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .header-container {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 20px 30px;
-    }
-
-    .header-container h1 {
-        margin-bottom: 0;
-    }
-
+/* Responsive Media Queries */
+@media screen and (max-width: 768px) {
     .scoreboard-container {
-        flex-direction: row; /* Arrange teams side-by-side */
-        flex-wrap: wrap; /* Allow sections to wrap if not enough space (e.g., small tablet in landscape) */
-        justify-content: center; /* Center items when wrapped */
-        padding: 30px;
-    }
-
-    .team-section {
-        flex: 1 1 300px; /* Allow shrinking/growing with a base of 300px */
-        max-width: 48%; /* Adjust for gap */
-        padding: 40px;
-    }
-
-    .timer-section {
-        order: 0; /* Reset order for larger screens to appear between teams */
-        flex: 0 0 150px; /* Fixed width for timer in desktop view */
-        min-width: 150px;
-        max-width: 180px; /* Adjust as needed */
-        padding: 20px; /* Reduce padding for smaller timer section */
-    }
-
-    .timer-buttons {
-        flex-direction: column; /* Stack timer buttons vertically */
-        gap: 8px;
-    }
-
-    .timer-buttons button {
-        width: 100%; /* Make timer buttons full width */
-        padding: 8px 15px;
-    }
-    
-    .timer-buttons input[type="number"] {
-        width: 100%; /* Make inputs full width */
-        margin-bottom: 5px; /* Add some spacing */
-    }
-
-    .score-buttons button, .foul-buttons button {
-        flex: none; /* Reset flex-grow for larger screens to prevent stretching */
-        width: auto; /* Allow buttons to size naturally */
-    }
-}
-
-/* Large devices (desktops, 1024px and up) */
-@media (min-width: 1024px) {
-    body {
-        padding: 30px;
-    }
-
-    .header-container {
-        padding: 25px 50px;
-    }
-
-    .scoreboard-container {
-        padding: 40px;
-        gap: 50px;
-        flex-wrap: nowrap; /* Ensure no wrapping on large screens */
-    }
-
-    .team-section {
-        padding: 50px;
-    }
-
-    .timer-section {
-        flex: 0 0 180px; /* Set a specific width for the timer board */
-        min-width: 180px;
-        max-width: 200px;
-        padding: 30px 20px;
-    }
-
-    .timer-display {
-        font-size: 4.5rem; /* Larger font for desktop timer */
-    }
-
-    button {
-        padding: 15px 30px;
-    }
-}
-
-/* Even smaller devices (mobile landscape, small tablets) */
-@media (max-width: 767px) {
-    .scoreboard-container {
-        flex-direction: column; /* Stack all sections vertically */
+        flex-direction: column;
         align-items: center;
     }
 
-    .team-section, .timer-section {
-        width: 100%; /* Take full width */
-        max-width: 450px; /* Keep max-width for aesthetic */
-        margin-bottom: 20px; /* Space between stacked sections */
+    .team-section {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-container {
+        font-size: 0.9rem;
     }
 
-    .timer-section {
-        order: 1; /* Place timer directly after team 1 on small screens */
+    button {
+        font-size: 0.8rem;
     }
 
-    .timer-buttons {
-        flex-direction: row; /* Keep buttons in a row, let them wrap */
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .timer-buttons button, .timer-buttons input[type="number"] {
-        flex: 1 1 auto; /* Allow items to grow/shrink based on content */
-        min-width: 70px; /* Ensure a minimum width */
+    .score-display,
+    .fouls-display,
+    .timer-display {
+        font-size: 1.5rem;
     }
 }
