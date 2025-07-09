@@ -52,26 +52,18 @@
             <div class="timer-section team-section">
                 <h2>Game Clock</h2>
                 <div class="timer-display" id="game-timer">00:00</div>
+                
                 <div class="timer-buttons">
-                    <button id="start-timer">Start</button>
-                    <button id="pause-timer">Pause</button>
-                    <button id="reset-timer">Reset</button>
-                    <input
-                        type="number"
-                        id="minutes-input"
-                        placeholder="Min"
-                        min="0"
-                        value="10"
-                    >
-                    <input
-                        type="number"
-                        id="seconds-input"
-                        placeholder="Sec"
-                        min="0"
-                        max="59"
-                        value="0"
-                    >
-                    <button id="set-timer">Set</button>
+                    <div class="timer-buttons-row">
+                        <button id="start-timer">Start</button>
+                        <button id="pause-timer">Pause</button>
+                        <button id="reset-timer">Reset</button>
+                    </div>
+                    <div class="timer-buttons-row">
+                        <input type="number" id="minutes-input" placeholder="Min" min="0" value="10">
+                        <input type="number" id="seconds-input" placeholder="Sec" min="0" max="59" value="0">
+                        <button id="set-timer">Set</button>
+                    </div>
                 </div>
             </div>
 
